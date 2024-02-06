@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.1.0/remixicon.css" />
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+    <script src="https://kit.fontawesome.com/0dc119142e.js" crossorigin="anonymous"></script>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/style.css" />
+</head>
+    <nav class="nav-con">
+        <h1><a href="/">BLOG.IO</a></h1>
+        <div class="login-Con">
+            <% if(!isLogin) { %>
+                <div class="login-btn">
+                    <a href="/login" class="create">Login account</a>
+                </div>
+                <a href="/register" >Create account</a>
+            <% } %>
+            </div>
+            <% if(isLogin) { %>
+            <div  class="logout-con">
+                <a href="/admin/create-post">Create a new post </a>
+                <a href="/admin/profile">Profile</a>
+                    <form action="/logout" method="post">
+                            <input hidden name="_csrf" value="<%= csrfToken %>">
+                            <button>Logout</button>
+                    </form>
+            </div>
+            <% } %>
+        </div>
+    </nav>
+<body>

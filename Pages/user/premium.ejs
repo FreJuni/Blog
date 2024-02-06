@@ -1,0 +1,27 @@
+<%- include("../includes/head.ejs")  %>
+    <div class="premium-con">
+        <div class="premium-card">
+           <h2>Premium</h2>
+            <ul>
+                <li>You can download as PDF File.</li>
+                <li>You can change  username unlimited.</li>
+                <li>You can use animate profile badge.</li>
+            </ul>
+            <div class="button">
+                <button class="premium-btn">Buy IO Premium</button>
+                <script src="https://js.stripe.com/v3/"></script>
+                <script>
+                    var stripe = Stripe(
+                        "pk_test_51OZryPHOZu1Ie1IH7giGui5x5fsGXwACCDKRKASaskTu4wcm83Hryco8MZiHCiXwNdxUB77AYDoCQz30HtXlP42E00S5lVHCLE"
+                    )
+                    var stripeButron = document.querySelector(".premium-btn")
+                    stripeButron.addEventListener("click", () => {
+                        stripe.redirectToCheckout({
+                            sessionId : "<%= session_id %>"
+                        })
+                    })
+                </script>
+            </div>
+        </div>
+    </div>
+<%- include("../includes/foot.ejs") %>

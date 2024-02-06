@@ -1,0 +1,420 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Roboto:wght@100;300;500;900&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+    font-family: 'Roboto', sans-serif;    
+}
+
+.Home-con {
+    max-width: 1000px;
+    margin : 0 auto;
+}
+.Home-con > h2 {
+    color: cornflowerblue;
+    font-size: 2rem;
+}
+.Home-con > p {
+    font-size: 1.1rem;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+    background-color: cornflowerblue;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 2px;
+}
+.create {
+    display: flex;
+    justify-content: center;
+}
+.Post-con {
+    text-align: center;
+}
+.Post-con > h1 {
+    color: cornflowerblue;
+}
+.Post-con > p {
+    font-size: 1.1rem;
+    color: gray;
+}
+.info button{
+    margin-top: 1.5rem;
+}
+.add-post-con {
+    max-width: 600px;
+    margin: 0 auto;
+    padding-top: 1rem;
+}
+.author-info {
+    padding: 8px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items : center
+}
+.author-info p {
+    margin: 0;
+    padding: 4px;
+}
+.post-con div p {
+    text-align: start;
+}
+.con label {
+    display: block;
+}
+.con {
+    padding: 5px 0;
+}
+input {
+    width: 97%;
+    padding: 8px;
+    font-size: 1rem;
+}
+button {
+    background-color: cornflowerblue;
+    color: white;
+    padding: 7px 1rem;
+    border-radius: 2px;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+.info-con {
+    padding: .6rem ;
+}
+.info-con a {
+    padding-bottom: 5px;
+}
+.post-con {
+    box-shadow: 0px 0px 5px -2px rgba(0,0,0,0.75);
+    margin-bottom: 1rem;
+    text-align:  start;
+}
+.post-con a {
+    background: none;
+    padding : 0;
+    color: black;
+}
+.post-title, .post-des {
+    text-align: start;
+    padding-top: 10px;
+}
+.post-title {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.logout-con {
+    display: flex;
+    gap: .6rem;
+}
+.user {
+    padding: 4px 0;
+}
+.login-Con a {
+    background-color: none;
+    color: black;
+}
+.public-profile-img {
+    width: 47px;
+    height: 47px;
+    border-radius: 4px;
+    object-fit: cover;
+}
+.home-profile-img {
+    width: 45px;
+    height: 45px;
+    border-radius: 4px;
+}
+.profile-img{
+    width: 70px;
+    height: 70px;
+    border-radius: 5px;
+    object-fit: cover;
+}
+.details-con {
+    max-width: 900px;
+    margin: 0 auto;
+}
+.post-title-con img {
+    width: 100%;
+    height : 200px;
+    object-fit: cover;
+}
+.add-title-con {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.add-title-con h1 {
+    text-align: center;
+}
+textarea {
+    width: 97%;
+    padding: 8px;
+    height: 200px;
+    resize: none;
+    box-shadow: 0px 0px 5px 0px rgba(56,109,255,1);
+    border: none;
+}
+textarea:focus {
+    outline: none;
+}
+.post-btn {
+    width: 100%;
+    margin: 1rem 0;
+}
+
+.details-con img {
+    width: 100%;
+    height: 400px;
+}
+
+.details {
+    margin: 3rem 0;
+}
+.goback {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:0 0 1.5rem ;
+    flex-direction: row-reverse;
+}
+.goback button a {
+    background: none !important;
+    color: cornflowerblue;
+    padding: 0;
+    font-size: 2.3rem;
+}
+.goback button {
+    padding: 0;
+    background: none !important;
+}
+.details h1 {
+    margin: 0;
+    font-size:2rem;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+.info p {
+    font-size: 1.1rem;
+    color: gray;
+    padding: 5px 0 0 0;
+}
+.info h1, .info p {
+    margin : 0
+}
+.detail form {
+    display: inline-block;
+}
+.post-con div h4, .post-con div p {
+    margin: 0;
+}
+
+.errorMsg {
+    color: red;
+    font-weight: 600;
+}
+.forget-con {
+    padding : 5px 0;
+}
+.forget {
+    color: cornflowerblue;
+    background : none;
+    text-decoration: underline;
+    padding: 0;
+}
+.sucess {
+    text-align: center;
+}
+.login-con {
+    box-shadow: 0px 0px 5px 0px rgba(56,109,255,1);
+    padding: 1.5rem;
+    border-radius: 5px;
+}
+.edit-post {
+    box-shadow: 0px 0px 5px 0px rgba(56,109,255,1);
+    padding: 1.5rem;
+    border-radius: 5px;
+}
+.login-con span {
+    font-weight: 600;
+}
+.paid {
+    background-color: green;
+    color: white;
+    padding: 3px 6px;
+    border-radius: 2px;
+}
+.con input {
+    border: none;
+    box-shadow: 0px 0px 5px 0px rgba(56,109,255,1);
+}
+.con label {
+    padding: 6px 0;
+    font-size: 1.2rem;
+}
+.con input:focus {
+    outline: none;
+}
+.login-con h1,.login-con a {
+    text-align: center;
+}
+.login-con .feedback {
+    padding-top: 1rem;
+    text-align: center;
+}
+.user-info {
+    padding-top: .6rem;
+    display: flex;
+    gap: 1rem;
+}
+.login-con div a {
+    margin: 0 6px;
+}
+.error-con {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+}
+.error-c h2 {
+    margin: 0;
+    font-size: 5rem;
+}
+.error-c p {
+    font-size: 2rem;
+}
+.fa-user {
+    font-size: 2.5rem;
+
+}
+.error-c {
+    text-align: center;
+}
+.next-page {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+}
+.nav-con {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.nav-con h1 a {
+    background: none;
+    font-size: 2rem;
+    font-weight: 600;
+    color : black;
+}
+.login-Con {
+    display: flex;
+    gap: 1rem;
+}
+
+.container-post {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+.nav-con a {
+    background: none !important;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: black;
+}
+.nav-con button {
+    background: none !important;
+    color: black;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+.edit-con {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+.edit-con button {
+    background: none !important;
+    padding : 0;
+    font-weight: 600;
+    color: red;
+}
+.edit-con a {
+    background: none !important;
+    color: cornflowerblue;
+    padding: 0;
+}
+.profile {
+    text-align: center;
+}
+.profile h4 {
+    margin : 0;
+    padding-bottom: 1.5rem;
+}
+.fa-circle-user {
+    font-size:5rem;
+}
+.own-profile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1rem;
+}
+.own-profile div h4 {
+    margin: 0;
+    padding : 4px 0 ;
+}
+.premium-con {
+    width: 100%;
+    display: grid;
+    place-items : center;
+    height: 70vh;
+}
+.premium-card {
+    border: 3px solid black;
+    border-radius: 10px;
+    padding: 1rem;
+}
+.premium-card h2, .premium-card .button {
+    margin: 0;
+    text-align: center;
+}
+.premium-card ul {
+    padding: 0;
+}
+.premium-card ul li {
+    list-style: none;
+    padding: 2px 0;
+}
+.premium-card p {
+    background-color: cornflowerblue;
+    padding: 5px 10px;
+    border-radius: 2px;
+    cursor: pointer;
+    color: white;
+    display: inline-block;
+    margin:  0;
+}
+.username {
+    margin: 0;
+}
+.button-info-con {
+    margin: 1rem 0;
+}
+.add-title-con a{
+    font-size: 2rem;
+    background: none !important;
+    color: black;
+}
+.deatail-btn a {
+    background: none;
+    font-size: 2rem;
+    color: black;
+    padding: 0;
+    float: inline-end;
+}

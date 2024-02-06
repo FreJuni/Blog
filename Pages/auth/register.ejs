@@ -1,0 +1,24 @@
+<%- include("../includes/head.ejs")  %>
+    <div class="add-post-con">
+        <div class="login-con">
+            <div class="add-title-con">
+                <h1>Register new account here.</h1>
+            </div>
+            <form action="/register" method="post">
+                <input value="<%= csrfToken %>" name="_csrf" hidden>
+                <% if(errorMsg) { %>
+                    <p class="errorMsg"><%= errorMsg %></p>
+                <% } %>
+                <div class="con">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" value="<%= oldForm.email %>">
+                </div>
+                <div class="con">
+                    <label for="password">Enter password</label>
+                    <input type="password" name="password" value="<%= oldForm.password %>" >
+                </div>
+                <button class="post-btn">Register</button>
+            </form>
+        </div>
+    </div>
+<%- include("../includes/foot.ejs") %>

@@ -1,0 +1,38 @@
+<%- include('./includes/head.ejs')  %>
+    <section class="details-con">
+        <div class="details">
+            <div class="goback">
+                <button>
+                    <a class="det-btn" href="/"><i class="ri-arrow-left-line"></i></a>
+                </button>
+                <h1><%= post.title %></h1>
+            </div>
+            <div class="author-info">
+                <div>
+                    <p><i class="ri-user-fill"></i> <%= post.userId.email  %></p>
+                    <% if(date) { %>
+                        <p><i class="ri-calendar-2-fill"></i> <%= date  %></p>
+                    <% } %>
+                </div>
+                <div class="save-btn">
+                   <% if (isPremium) { %>
+                    <a href="/admin/save/<%= post._id %>"><i class="ri-mail-download-line"></i></a>
+                   <% } %>
+                </div>
+            </div>
+            <% if(post.userId._id.toString() === currentUserId.toString()) { %>
+                    <div class="edit-con">
+                        <form action="/admin/delete/<%=post._id %>" method="post">
+                         <input value="<%= csrfToken %>" name="_csrf" hidden>
+                            <button>move to trash</button>
+                        </form>
+                        <a href="/admin/edit-post/<%=post._id %>">Edit</a>
+                    </div>
+                <% } %>
+            <img src="<%= '/' + post.image %>" alt="<%= post.title %>" />
+           <div class="info">
+            <p><%= post.description %></p>
+           </div>
+        </div>
+    </section>
+<%- include('./includes/foot.ejs')  %>

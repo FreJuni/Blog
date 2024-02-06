@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@500&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h2 style="font-family: 'Noto Sans', sans-serif">{{user.title}}</h2>
+        <p>Author - {{user.userId.email}}</p>
+        <img src="http://localhost:8080/{{user.image }}" width = "100%" height="600" alt="{{user.title}}">
+        <p style="font-family: 'Noto Sans', sans-serif">{{user.description}}</p>
+    </div>
+</body>
+</html>

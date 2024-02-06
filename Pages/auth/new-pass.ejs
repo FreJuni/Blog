@@ -1,0 +1,24 @@
+<%- include("../includes/head.ejs")  %>
+    <div class="add-post-con">
+        <div class="add-title-con">
+            <h1>New Password.</h1>
+        </div>
+        <form action="/change-new-password" method="post">
+            <input value="<%= csrfToken %>" name="_csrf" hidden>
+            <input value="<%= resetToken %>" name="resetToken" hidden>
+            <input value="<%= user_id %>" name="user_id" hidden>
+            <% if(errorMsg) { %>
+                <p class="errorMsg"><%= errorMsg %></p>
+            <% } %>
+            <div class="con">
+                <label for="password">Password</label>
+                <input type="password" name="password" value="<%= oldForm.password %>" required>
+            </div>
+            <div class="con">
+                <label for="confirm_password">Confirm Password</label>
+                <input type="password" name="confirm_password" value="<%= oldForm.confirm_password %>"  required>
+            </div>
+            <button class="post-btn">Change Password</button>
+        </form>
+    </div>
+<%- include("../includes/foot.ejs") %>

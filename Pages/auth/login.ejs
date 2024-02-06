@@ -1,0 +1,28 @@
+<%- include("../includes/head.ejs")  %>
+    <div class="add-post-con">
+        <div class="login-con">
+            <div class="add-title-con">
+                <h1>Login account</h1>
+            </div>
+            <form action="/login" method="post">
+                <input name="_csrf" value="<%= csrfToken %>" hidden>
+                <% if(error) { %>
+                    <p class="errorMsg"><%= error %></p>
+                <% } %>
+                <div class="con">
+                    <label for="title">Email</label>
+                    <input type="email" name="email" value="<%= oldForm.email %>">
+                </div>
+                <div class="con">
+                    <label for="password">Enter passwrd</label>
+                    <input type="password" name="password" value="<%= oldForm.password %>" >
+                </div>
+                <div class="forget-con">
+                    <a href="/reset-password" class="forget">Forget password?</a>
+                </div>
+                <button class="post-btn">Login</button>
+            </form>
+        </div>
+   
+    </div>
+<%- include("../includes/foot.ejs") %>

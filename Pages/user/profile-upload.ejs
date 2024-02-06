@@ -1,0 +1,21 @@
+<%- include("../includes/head.ejs")  %>
+    <div class="add-post-con">
+        <div class="login-con">
+            <div class="add-title-con">
+                <h1>Upload profile</h1>
+                <a href="/admin/profile"><i class="fa-solid fa-arrow-left"></i></a>
+            </div>
+            <form action="/admin/set_profile" method="post" enctype="multipart/form-data">
+                <input name="_csrf" value="<%= csrfToken %>" hidden>
+                <% if(error) { %>
+                    <p><%= error %></p>
+                <% } %>
+                <div class="con">
+                    <label for="image">Upload Profile</label>
+                    <input type="file" name="image"  >
+                </div>
+                <button class="post-btn">Upload Profile</button>
+            </form>
+        </div>
+    </div>
+<%- include("../includes/foot.ejs") %>

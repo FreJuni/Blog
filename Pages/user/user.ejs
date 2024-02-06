@@ -1,0 +1,77 @@
+<%- include("../includes/head.ejs")  %>
+<div class="Home-con">
+    <hr>
+    <% if(postArray.length > 0) { %>
+        <div class="own-profile">
+            <div class="profile-con">
+                 <% if (postArray[0].userId.profile_imgUrl && postArray[0].userId.isPremium  ) { %>
+                     <img src="<%= '/' + postArray[0].userId.profile_imgUrl %>" alt="<%= postArray[0].userId.username %>" class="profile-img">
+                 <% } else {%>
+                     <i class="fa-solid fa-circle-user"></i>
+                 <% } %>
+                 <h4><%=  userEmail %></h4>
+                 <p class="username">
+                     <% if (postArray[0].userId.username) { %>
+                         <span><%= postArray[0].userId.username %> <% if( postArray[0].userId.isPremium) { %>
+                             <i class="fa-solid fa-star animate__animated animate__infinite	infinite animate__heartBeat"></i>
+                         <% } %></span>
+                     <% } else { %>
+                        <span> <%=  postArray[0].userId.username %></span>
+                     <% } %>
+                 </p>
+            </div>
+            <div>
+             <% if (postArray[0].userId.isPremium) { %>
+                 <a href="/admin/premium-detail">Premium status</a>
+             <% } else { %>
+                 <a href="/admin/premium">Buy premium</a>
+             <% } %>
+            </div>
+         </div>
+         <div class="button-info-con">
+            <% if (postArray[0].userId.username) { %>
+                <a href="/admin/set-username">Update username</a>
+            <% } else { %>
+                <a href="/admin/set-username">Set username</a>
+            <% } %>
+            <% if (postArray[0].userId.isPremium) { %>
+                <a href="/admin/profile_image">Upload profile</a>
+            <% } %>
+         </div>
+         <div class="container-post">
+             <% for(let post of postArray) { %> 
+                 <div class="post-con">
+                    <div class="post-title-con">
+                      <img src="<%= '/' + post.image %>" alt="<%= post.title %>">
+                    </div>
+                    <div class="info-con">
+                     <a href="/post/<%= post._id %>" class="post-title"><%= post.title.substring(0,25   ) %>...</a>
+                        <div class="post-des">
+                         <p >
+                             <%= post.description.substring(0,100) %>...
+                            </p>
+                        </div>
+                        <p class="user"><%= post.userId.email %></p>
+                    </div>
+                 </div>
+                 <% } %>
+         </div>
+         <div class="next-page">
+             <% if (haspreviousPage) { %>
+                 <a href="/admin/profile/?page=<%= previousPage %>">Previous Page <%= previousPage %></a>
+              <% } %>
+              <% if (hasnextPage) { %>
+                 <a href="/admin/profile/?page=<%= nextPage %>">Next Page <%= nextPage  %></a>
+              <% } %>
+        </div>
+    <% } else { %>
+        <div style="text-align: center;display: flex; align-items: center; justify-content: center; width: 100%;">
+            <div>
+                <h2>Create a new post.</h2>
+                <a href="/admin/create-post">Create post</a>
+            </div>
+        </div>
+    <% } %>
+</div>
+       
+<%- include("../includes/foot.ejs") %>

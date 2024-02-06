@@ -1,0 +1,76 @@
+<%- include("./includes/head.ejs") %> 
+    <div class="Home-con">
+        <hr>
+        <h1>Recent Posts</h1>
+        <% if(postArray.length < 1 && isLogin) { %>
+            <div>
+                <p>There was no post yet.</p>
+                <p>Want to create new post!!!</p>
+                <a href="/admin/create-post">Go to admin</a>
+            </div>
+        <% } %>
+        <div class="container-post">
+            <% for(let post of postArray) { %> 
+                <div class="post-con">
+                   <div class="post-title-con">
+                     <img src="<%= post.image %>" alt="<%= post.title %>">
+                   </div>
+                   <div class="info-con">
+                        <p class="post-title"><%= post.title.substring(0,25   ) %>...</p>
+                        <div class="post-des">
+                            <p >
+                                <%= post.description.substring(0,100) %>...
+                            </p>
+                        </div>
+                        <hr>
+                        <div class="user-info">
+                            <% if (currnetUserId.toString() === post.userId._id.toString() ) { %>
+                                <p class="user"><a href="/admin/profile">
+                                    <% if (post.userId.profile_imgUrl && post.userId.isPremium  ) { %>
+                                        <img src="<%= '/' + post.userId.profile_imgUrl %>" alt="<%= post.userId.username %>" class="public-profile-img">
+                                    <% } else {%>
+                                        <i class="fa-solid fa-user"></i>
+                                    <% } %>
+                                    
+                                </a></p>
+                            <% } else { %>
+                                    <p class="user"><a href="/public-profile/<%= post.userId._id %>"> 
+                                        <% if (post.userId.profile_imgUrl && post.userId.isPremium  ) { %>
+                                        <img src="<%= '/' + post.userId.profile_imgUrl %>" alt="<%= post.userId.username %>" class="home-profile-img">
+                                    <% } else {%>
+                                        <i class="fa-solid fa-user"></i>
+                                    <% } %>
+                                    </a></p>
+                            <% } %>
+                        <div>
+                            <p class="user"><%= post.userId.email %></p>
+                            <% if (post.userId.username) { %>
+                                <span>
+                                    <% if (post.userId.username) { %>
+                                        <span>                              
+                                           <% if(post.userId.isPremium) { %>
+                                            <%= post.userId.username %> 
+                                            <i class="fa-solid fa-star animate__animated animate__infinite	infinite animate__heartBeat"></i>
+                                           <% } else {%>
+                                            <%= post.userId.username %> 
+                                           <% } %>
+                                        </span>
+                                    <% } %>       
+                                </span>
+                            <% } %>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+       <div class="next-page">
+         <% if (haspreviousPage) { %>
+            <a href="/?page=<%= previousPage %>">Previous Page <%= previousPage %></a>
+         <% } %>
+         <% if (hasnextPage) { %>
+            <a href="/?page=<%= nextPage %>">Next Page <%= nextPage  %></a>
+         <% } %>
+       </div>
+    </div>
+<%- include("./includes/foot.ejs") %> 

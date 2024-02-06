@@ -1,0 +1,17 @@
+<%- include("../includes/head.ejs")  %>
+    <div class="add-post-con">
+        <div class="login-con">
+                <div class="deatail-btn">       
+                  <h1>Premium Detail</h1>
+                  <a href="/admin/profile"><i class="fa-solid fa-arrow-left"></i></a>
+                </div>
+                <p>Customer - <span><%= customer_id %></span></p>
+                <p>Country - <span><%= country %></span></p>
+                <p>Postal_code - <span><%= postal_code %></span></p>
+                <p>Email - <span><%=  email %></span></p>
+                <p>Name - <span><%= name %></span></p>
+                <p>Invoice_id - <span><%= invoice_id %></span></p>
+                <p>Status - <span class="paid"><%= status %></span></p>
+        </div>
+    </div>
+<%- include("../includes/foot.ejs") %>

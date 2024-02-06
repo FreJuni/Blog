@@ -1,0 +1,50 @@
+<%- include("../includes/head.ejs")  %>
+<div class="Home-con">
+    <div class="profile">
+        <% if (postArray[0].userId.profile_imgUrl && postArray[0].userId.isPremium  ) { %>
+            <img src="<%= '/' + postArray[0].userId.profile_imgUrl %>" alt="<%= postArray[0].userId.username %>" class="public-profile-img">
+        <% } else {%>
+            <i class="fa-solid fa-circle-user"></i>
+        <% } %>
+        <h4><%= title %>
+            <p class="username">
+                <% if (postArray[0].userId.username) { %>
+                    <span><%= postArray[0].userId.username %> <% if( postArray[0].userId.isPremium) { %>
+                        <i class="fa-solid fa-star animate__animated animate__infinite	infinite animate__heartBeat"></i>
+                    <% } %></span>
+                <% } else { %>
+                   <span> <%=  postArray[0].userId.username %></span>
+                <% } %>
+            </p></h4>
+        
+    </div>
+    <div class="container-post">
+        <% for(let post of postArray) { %> 
+            <div class="post-con">
+               <div class="post-title-con">
+                 <img src="<%= '/' + post.image %>" alt="<%= post.title %>">
+               </div>
+               <div class="info-con">
+                <a href="/post/<%= post._id %>" class="post-title"><%= post.title.substring(0,25   ) %>...</a>
+                   <div class="post-des">
+                    <p >
+                        <%= post.description.substring(0,100) %>...
+                       </p>
+                   </div>
+                   <p class="user"><%= post.userId.email %></p>
+               </div>
+            </div>
+            <% } %>
+    </div>
+    <div class="next-page">
+       
+         <% if (haspreviousPage) { %>
+            <a href="/public-profile/<%= id %>?page=<%= previousPage %>">Previous Page <%= previousPage %></a>
+         <% } %>
+         <% if (hasnextPage) { %>
+            <a href="/public-profile/<%= id %>?page=<%= nextPage %>">Next Page <%= nextPage  %></a>
+         <% } %>
+       </div>
+</div>
+       
+<%- include("../includes/foot.ejs") %>

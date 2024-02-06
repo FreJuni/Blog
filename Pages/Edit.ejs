@@ -1,0 +1,29 @@
+<%- include("./includes/head.ejs")  %>
+    <div class="add-post-con edit-post">
+        <div class="add-title-con">
+            <h1>Edit post.</h1>
+            <a href="/post/<%= post._id %>"><i class="fa-solid fa-arrow-left"></i></a>
+        </div>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta in consequuntur dolore?</p>
+        <form action="/admin/edit" method="post" enctype="multipart/form-data">
+            <input value="<%= csrfToken %>" name="_csrf" hidden>
+            <input type="text" name="id" value="<%= validation ? post._id  : id%>" hidden>
+            <% if (errorMsg) { %>
+                <p class="errorMsg"><%= errorMsg %></p>
+            <% } %>
+            <div class="con">
+                <label for="title">Title</label>
+                <input type="text" value="<%= validation ? post.title : oldForm.title %>" name="title" required>
+            </div>
+            <div class="con">
+                <label for="image">Image URl</label>
+                <input type="file" name="image">
+            </div>
+           <div class="con">
+                <label for="description">Description</label>
+                <textarea name="description" required id="description"><%= validation ?post.description : oldForm.description %></textarea>
+           </div>
+            <button class="post-btn">Edit</button>
+        </form>
+    </div>
+<%- include("./includes/foot.ejs") %>

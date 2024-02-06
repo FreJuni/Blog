@@ -1,0 +1,21 @@
+<%- include("../includes/head.ejs")  %>
+    <div class="add-post-con">
+        <div class="login-con">
+            <div class="add-title-con">
+                <h1>Change Username</h1>
+                <a href="/admin/profile"><i class="fa-solid fa-arrow-left"></i></a>
+            </div>
+            <form action="/admin/set_username" method="post">
+                <input name="_csrf" value="<%= csrfToken %>" hidden>
+                <% if(error) { %>
+                    <p><%= error %></p>
+                <% } %>
+                <div class="con">
+                    <label for="username">Username</label>
+                    <input type="text" value="<%= oldForm ? oldForm.username : undefined%>" name="username" required>
+                </div>
+                <button class="post-btn">Set Username</button>
+            </form>
+        </div>
+    </div>
+<%- include("../includes/foot.ejs") %>
