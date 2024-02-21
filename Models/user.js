@@ -3,15 +3,15 @@ const mongoose = require("mongoose");
 const { Schema, model } = mongoose;
 
 const userSchema = new Schema({
-  username: {
-    type: String,
-    unique: true,
-    minLength: 5,
-  },
   email: {
     type: String,
     required: true,
     unique: true,
+  },
+  username: {
+    type: String,
+    minLength: 5,
+    sparse : true,
   },
   password: {
     type: String,
@@ -32,5 +32,8 @@ const userSchema = new Schema({
   resetToken: String,
   tokenExpiration: Date,
 });
+
+// Create a sparse index on the username field
+userSchema.index({ email: 1 }, { sparse: true });
 
 module.exports = model("User", userSchema);
