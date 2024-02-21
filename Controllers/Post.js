@@ -210,7 +210,7 @@ exports.savePost = (req, res, next) => {
     format: "A3",
     orientation: "portrait",
     border: "10mm",
-    timeout: "10000",
+    timeout: "10000000",
     header: {
       height: "20mm",
       contents: '<div style="text-align: center;">PDF Download</div>',
