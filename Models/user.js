@@ -10,8 +10,7 @@ const userSchema = new Schema({
   },
   username: {
     type: String,
-    minLength: 5,
-    sparse : true,
+    unique : true
   },
   password: {
     type: String,

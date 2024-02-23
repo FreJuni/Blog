@@ -1,7 +1,7 @@
 const User = require("../Models/user");
 const bcrypt = require("bcrypt");
 const nodemailer = require("nodemailer");
-const dotenv = require("dotenv").config();
+require("dotenv").config();
 const crypto = require("crypto");
 const { validationResult } = require("express-validator");
 
@@ -108,6 +108,7 @@ exports.registerPage = (req, res) => {
 // handle register
 exports.registerAccount = (req, res) => {
   const { email, password } = req.body;
+  const defaultUserName = email.split("@")[0];
   const error = validationResult(req);
   if (!error.isEmpty()) {
     return res.status(422).render("../Pages/auth/register", {
@@ -128,6 +129,7 @@ exports.registerAccount = (req, res) => {
           return User.create({
             email: email,
             password: haspwd,
+            username : `@${defaultUserName}`
           });
         })
         .then((_) => {
@@ -180,7 +182,6 @@ exports.handleResetForm = (req, res) => {
     User.findOne({ email: email })
       .then((user) => {
         if (!user) {
-          console.log("helo fromuser");
           return res.render("../Pages/auth/reset", {
             title: "Reset Page",
             errorMsg: "Can't find an account with this email",
@@ -190,13 +191,13 @@ exports.handleResetForm = (req, res) => {
         user.tokenExpiration = Date.now() + 900000;
         return user.save();
       })
-      .then((result) => {
+      .then(() => {
         res.redirect("/feedback");
         transporter.sendMail({
           from: process.env.SENDER_MAIL,
           to: email,
           subject: "Reset Password",
-          html: `<h2>Reset password</h2><p>Reset your password</p><a href="http://localhost:8080/forget_password/${token}">Click to change password</a>`,
+          html: `<h2>Reset password</h2><p>Reset your password</p><a href="${req.protocol}://${req.get("host")}/forget_password/${token}">Click to change password</a>`,
         });
       })
       .catch((err) => {
@@ -210,7 +211,6 @@ exports.newPasswordPage = (req, res) => {
   const { token } = req.params;
   User.findOne({ resetToken: token, tokenExpiration: { $gt: Date.now() } })
     .then((user) => {
-      console.log(user);
       let message = req.flash("err");
       if (message.length > 0) {
         message = message[0];

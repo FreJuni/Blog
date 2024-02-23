@@ -5,6 +5,7 @@ const User = require("../Models/user");
 const stripe = require("stripe")(
   "sk_test_51OZryPHOZu1Ie1IHv43YQkrRWTx18QaoEZSUSg2f13qCWjh1Ay9R31E9CFdL6GWubnVFOggr0ilB1XzeW6BcCgDi00aIR1saBW"
 );
+const fileDelete = require("../util/fileDelete")
 
 exports.userProfile = (req, res) => {
   const pageNumber = +req.query.page || 1;
@@ -244,6 +245,9 @@ exports.getUploadUerPhoto = (req, res) => {
   }
   User.findById(req.user._id)
     .then((user) => {
+      if(user.profile_imgUrl) {
+        fileDelete(user.profile_imgUrl)
+      }
       user.profile_imgUrl = image.path;
       return user.save();
     })

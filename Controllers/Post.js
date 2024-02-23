@@ -207,10 +207,15 @@ exports.savePost = (req, res, next) => {
   )}`;
   const html = fs.readFileSync(templateUrl, "utf8");
   const options = {
+    childProcessOptions : {        // can download from server
+      env : {
+        OPENSSL_CONF : "/dev/null",
+      }
+    },
     format: "A3",
     orientation: "portrait",
     border: "10mm",
-    timeout: "10000000",
+    timeout: "10000",
     header: {
       height: "20mm",
       contents: '<div style="text-align: center;">PDF Download</div>',
@@ -244,7 +249,7 @@ exports.savePost = (req, res, next) => {
 
       pdf
         .create(document, options)
-        .then((result) => {
+        .then(() => {
           res.download(pdfSaver, (err) => {
             if (err) throw err;
             fileDelete(pdfSaver);

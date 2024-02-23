@@ -16,7 +16,7 @@
                      <img src="<%= post.image %>" alt="<%= post.title %>">
                    </div>
                    <div class="info-con">
-                        <p class="post-title"><%= post.title.substring(0,25   ) %>...</p>
+                        <a href="/post/<%= post._id %>" class="post-title"><%= post.title.substring(0,25   ) %>...</a>
                         <div class="post-des">
                             <p >
                                 <%= post.description.substring(0,100) %>...
